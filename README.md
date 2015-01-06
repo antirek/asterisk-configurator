@@ -1,0 +1,4 @@
+asterisk-configurator
+=====================
+
+Asterisk configurator
