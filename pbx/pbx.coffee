@@ -16,5 +16,18 @@ class Pbx
       console.log 'saved'
     @trunks.push trunk
 
+  getTrunks: () ->
+    @trunks
+
+  loadTrunks: (callback)->
+    result = {}
+    object = @configurator.files['users.conf']
+    for key of object
+      if object.hasOwnProperty(key) and key.substr(0, 6) is 'trunk_'
+        result[key] = object[key]
+
+    callback result
+      
+
 
 module.exports = Pbx

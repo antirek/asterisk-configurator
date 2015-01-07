@@ -25,6 +25,22 @@
       return this.trunks.push(trunk);
     };
 
+    Pbx.prototype.getTrunks = function() {
+      return this.trunks;
+    };
+
+    Pbx.prototype.loadTrunks = function(callback) {
+      var key, object, result;
+      result = {};
+      object = this.configurator.files['users.conf'];
+      for (key in object) {
+        if (object.hasOwnProperty(key) && key.substr(0, 6) === 'trunk_') {
+          result[key] = object[key];
+        }
+      }
+      return callback(result);
+    };
+
     return Pbx;
 
   })();
